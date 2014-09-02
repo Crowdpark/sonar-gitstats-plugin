@@ -1,0 +1,16 @@
+<%
+   # the value will be displayed in the blue title bar across the top of the widget
+   @widget_title="GIT Stats"
+   @projects = configuration('sonar.gitStats.projects').split(',');
+%>
+<div class="dashbox">
+    <ul>
+        <% @projects.each do |project| %>
+        <li>
+            <a target="new" href="<%= configuration('sonar.gitStats.baseUrl') -%>/<%= project -%>/authors/best_authors.html">
+                - <%= project -%>
+            </a>
+        </li>
+        <% end %>
+    </ul>
+</div>
